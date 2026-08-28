@@ -1,7 +1,35 @@
+
+
 #---------------------------- TASK 1 ----------------------------
+
+
+    
+    
+    #Row-20,Col-35
+    #Underpopulation: Any live cell with fewer than two live neighbors dies.
+    #Survival: Any live cell with two or three live neighbors lives on to the next generation.
+    #Overpopulation: Any live cell with more than three live neighbors dies.
+    #Reproduction: Any dead cell with exactly three live neighbors becomes a live cell.
+        
 def count_neighbors(grid, row, col):
-    """
-    Counts the number of alive neighbors for a specific cell in the grid.
+       alive_count=0                            
+
+
+       for r in range(row-1,row+2):
+            for c in range(col-1,col+2):
+                if r==row and c==col:                       # code to prevent counting the given cell as its own neighbor
+                    continue
+                if r<0 or c<0 or r>=len(grid) or c>=len(grid[r]):   #helps in avoiding error due to 'edge cases'
+                    continue
+                
+                if grid[r][c]==1:
+                    alive_count+=1
+       return alive_count
+
+        
+        
+        
+"""Counts the number of alive neighbors for a specific cell in the grid.
     A cell can have up to 8 neighbors (horizontal, vertical, and diagonal).
     
     Args:
@@ -13,11 +41,11 @@ def count_neighbors(grid, row, col):
         int: The total number of alive neighbors (0 to 8).
     """
     
-    alive_count = 0
+    
     
     # TODO: Implement your neighbor-counting logic here!
 
-    return alive_count
+
 
 #---------------------------- TASK 2 ----------------------------
 def compute_next_generation(grid):
@@ -47,3 +75,4 @@ def compute_next_generation(grid):
     # TODO: Apply the 4 Rules of Life to determine if it should be 1 (alive) or 0 (dead) in `next_grid`.
 
     return next_grid
+
